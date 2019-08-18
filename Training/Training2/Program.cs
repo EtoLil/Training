@@ -2,9 +2,9 @@
 
 namespace Training2
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             try
             {
@@ -22,14 +22,14 @@ namespace Training2
                         goto case 2;
                     case 2:
                         Console.WriteLine("Task2:");
-                        Task2.Figure[] figures2 = { new Task2.Square(2,3), new Task2.Rectangle(3,6)};
+                        Task2.Figure[] figures2 = { new Task2.Square(2, 3), new Task2.Rectangle(3, 6) };
                         figures2[0].GetInfo();
                         figures2[1].GetInfo();
                         Console.WriteLine("\n");
                         goto case 3;
                     case 3:
                         Console.WriteLine("Task3:");
-                        Task3.Figure[] figures3 = { new Task3.Figure(2,7),new Task3.Square(2,3), new Task3.Rectangle(3,6) };
+                        Task3.Figure[] figures3 = { new Task3.Figure(2, 7), new Task3.Square(2, 3), new Task3.Rectangle(3, 6) };
                         figures3[0].GetInfo();
                         figures3[1].GetInfo();
                         figures3[2].GetInfo();
@@ -37,12 +37,12 @@ namespace Training2
                         goto case 4;
                     case 4:
                         Console.WriteLine("Task4:");
-                        int num1,num2;
+                        int num1, num2;
                         Console.WriteLine("Input number of classes!");
-                        num1= Convert.ToInt32(Console.ReadLine());
+                        num1 = Convert.ToInt32(Console.ReadLine());
                         Task4.IDrawable[] figures4 = new Task4.IDrawable[num1];
 
-                        for (int i=0;i<num1;++i)
+                        for (int i = 0; i < num1; ++i)
                         {
                             Console.WriteLine("1.Figure\n2.Square\n3.Rectangle");
                             num2 = Convert.ToInt32(Console.ReadLine());
@@ -69,6 +69,7 @@ namespace Training2
                                     break;
                             }
                         }
+
                         DrawAll(figures4);
                         break;
                     default:
@@ -81,27 +82,26 @@ namespace Training2
                 Console.WriteLine($"Error: {ex1.Message}");
             }
 
-
-
-
             Console.ReadKey();
         }
 
-        static void DrawAll(params Task4.IDrawable[] array)
+        private static void DrawAll(params Task4.IDrawable[] array)
         {
             foreach (Task4.IDrawable obj in array)
             {
                 obj.Draw();
             }
         }
-        static (double,double) ReadInfo()
+
+        private static (double, double) ReadInfo()
         {
-            double x,y;
+            double x, y;
             Console.WriteLine("Input X!");
             x = Convert.ToDouble(Console.ReadLine());
             Console.WriteLine("Input Y!");
             y = Convert.ToDouble(Console.ReadLine());
-            return (x,y);
+
+            return (x, y);
         }
     }
 }

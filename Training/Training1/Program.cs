@@ -2,11 +2,9 @@
 
 namespace Training1
 {
-    class Program
+    internal class Program
     {
-
-
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             try
             {
@@ -17,8 +15,11 @@ namespace Training1
                     case 1:
                         Point p1 = ReadPoint();
                         Point p2 = ReadPoint();
-                        if (p1.x >= p2.x || p1.y <= p2.y)
+                        if (p1.X >= p2.X || p1.Y <= p2.Y)
+                        {
                             throw new RectangleException("Cannot construct rectangle!");
+                        }
+
                         Rectangle rectangle = new Rectangle(p1, p2);
                         Console.WriteLine("1.Method\n2.Properties");
                         int menu = Convert.ToInt32(Console.ReadLine());
@@ -37,6 +38,7 @@ namespace Training1
                                 Console.WriteLine("Incorrect number!");
                                 break;
                         }
+
                         goto case 2;
                     case 2:
                         Console.WriteLine("Input radius!");
@@ -72,7 +74,6 @@ namespace Training1
                         Console.WriteLine("Incorrect number!");
                         break;
                 }
-
             }
             catch (FormatException ex1)
             {
@@ -91,17 +92,20 @@ namespace Training1
                 Console.WriteLine("Error: " + ex4.Message);
             }
 
-
             Console.ReadKey();
         }
-        static Point ReadPoint()
+
+        private static Point ReadPoint()
         {
             Console.WriteLine("Input x!");
             string input1 = Console.ReadLine();
             Console.WriteLine("Input y!");
             string input2 = Console.ReadLine();
-            if ((!Double.TryParse(input1, out double x)) || (!Double.TryParse(input2, out double y)))
+            if ((!double.TryParse(input1, out double x)) || (!double.TryParse(input2, out double y)))
+            {
                 throw new RectangleException("Incorrect input(type-double)!");
+            }
+
             return new Point(x, y);
         }
     }
