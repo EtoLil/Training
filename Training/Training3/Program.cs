@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Diagnostics;
 
 namespace Training3
 {
@@ -13,6 +10,7 @@ namespace Training3
             {
                 Console.WriteLine("Input number of task!(1,2 or 3)");
                 int number = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine();
                 switch (number)
                 {
                     case 1:
@@ -29,7 +27,10 @@ namespace Training3
                         break;
                 }
             }
-            catch { }
+            catch (FormatException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
 
             Console.ReadKey();
         }

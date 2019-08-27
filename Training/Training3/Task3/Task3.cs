@@ -5,7 +5,6 @@ namespace Training3.Task3
 {
     class Task3
     {
-
         private const int COUNT_OF_ELEMENTS_IN_PAGE = 5;
         private const int COUNT_OF_ELEMENTS_IN_LIST = 101;
         private const int LENGTH_OF_STR = 4;
@@ -23,9 +22,11 @@ namespace Training3.Task3
         {
             try
             {
+                Console.WriteLine("Task3");
                 str = GenerationLines();
-                Console.WriteLine("was : {0}", str.Count);
+                Console.WriteLine("Old lenght : {0}", str.Count);
                 Transformation();
+                Console.WriteLine("Current length: {0},", str.Count);
 
                 int number;
                 Console.WriteLine("Input number of page!");
@@ -35,7 +36,6 @@ namespace Training3.Task3
                 {
                     DisplayPage(number);
                 }
-
 
                 Console.ReadLine();
             }
@@ -68,6 +68,18 @@ namespace Training3.Task3
 
         private static void Transformation()
         {
+            HashSet<string> temp = new HashSet<string>(str);
+            str = new List<string>();
+            str.AddRange(temp);
+            for (int i = 0; i < str.Count; ++i)
+            {
+                if (str[i][0] == 'Z')
+                {
+                    str.RemoveAt(i);
+                    i--;
+                }
+            }
+
             str.Sort();
             str.Reverse();
         }
